@@ -143,5 +143,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.77.8",
+    "scss": "^0.2.4"
   }
 }
