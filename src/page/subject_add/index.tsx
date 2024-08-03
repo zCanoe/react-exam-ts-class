@@ -1,60 +1,32 @@
 import styles from "./index.module.css"
-import React, {useState} from "react";
-import {Button, TreeSelect, TreeSelectProps} from "antd"; // 使用css_module
+import React, {useEffect} from "react";
+import {Button, TreeSelect, TreeSelectProps} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch} from "@/store";
+import {
+    get_subject_tree_sync,
+    set_subject_active_two,
+    subject_active_two_select,
+    subject_tree_select
+} from "@/store/slice/subject";
+import LeftContent from "@/page/subject_add/leftContent";
+import RightContent from "@/page/subject_add/rightContent";
+// 使用css_module
 const Subject_add: React.FC = () => {
-    const treeData = [
-        {
-            value: 'parent 1',
-            title: 'parent 1',
-            children: [
-                {
-                    value: 'parent 1-0',
-                    title: 'parent 1-0',
-                    children: [
-                        {
-                            value: 'leaf1',
-                            title: 'leaf1',
-                        },
-                        {
-                            value: 'leaf2',
-                            title: 'leaf2',
-                        },
-                        {
-                            value: 'leaf3',
-                            title: 'leaf3',
-                        },
-                        {
-                            value: 'leaf4',
-                            title: 'leaf4',
-                        },
-                        {
-                            value: 'leaf5',
-                            title: 'leaf5',
-                        },
-                        {
-                            value: 'leaf6',
-                            title: 'leaf6',
-                        },
-                    ],
-                },
-                {
-                    value: 'parent 1-1',
-                    title: 'parent 1-1',
-                    children: [
-                        {
-                            value: 'leaf11',
-                            title: <b style={{ color: '#08c' }}>leaf11</b>,
-                        },
-                    ],
-                },
-            ],
-        },
-    ];
+    const dispatch: AppDispatch = useDispatch();
+    const treeData: any[] = useSelector(subject_tree_select);
+    const value: any = useSelector(subject_active_two_select);
 
-    const [value, setValue] = useState<string>();
+    useEffect(() => {
+        dispatch(get_subject_tree_sync()).then((res) => {
+            if(res.payload.length) {
+               dispatch(set_subject_active_two(res.payload[0].children[0]))
+            }
+        })
+    }, [])
 
-    const onChange = (newValue: string) => {
-        setValue(newValue);
+    const onChange = (newValue: string, name: any[]) => {
+        dispatch(set_subject_active_two({ title: name[0], value: newValue }));
     };
 
     const onPopupScroll: TreeSelectProps['onPopupScroll'] = (e) => {
@@ -87,8 +59,12 @@ const Subject_add: React.FC = () => {
             </div>
 
             <div className={styles.content}>
-                <div className={styles.left}></div>
-                <div className={styles.right}></div>
+                <div className={styles.left}>
+                    <LeftContent />
+                </div>
+                <div className={styles.right}>
+                    <RightContent />
+                </div>
             </div>
         </div>
     )
