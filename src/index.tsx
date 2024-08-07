@@ -8,7 +8,7 @@ import "@/assets/css/index.css";
 
 import store from "@/store";
 import App from "@/App";
-
+import "@/service/config";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/store";
 
 const coutnerSlice = createSlice({
@@ -7,7 +7,7 @@ const coutnerSlice = createSlice({
     count: 0,
   }),
   reducers: {
-    changeCount(state, { payload }) {
+    changeCount(state, { payload }: PayloadAction<number>) {
       state.count = payload;
     },
   },
