@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/react-exam-ts-class.iml" filepath="$PROJECT_DIR$/.idea/react-exam-ts-class.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../react-ts-music/.idea/react-ts-music.iml" filepath="$PROJECT_DIR$/../react-ts-music/.idea/react-ts-music.iml" />
     </modules>
   </component>
 </project>
