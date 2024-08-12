@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getBanner } from "@/views/discover/c-views/recommend/service";
+import { RootState } from "@/store";
 
 export const fetchBannerDataAction = createAsyncThunk(
   "recommend/banner",
@@ -37,5 +38,6 @@ const slice = createSlice({
   },
 });
 
+export const recommendSelector = (state: RootState) => state.recommend;
 export const { changerBannerAction } = slice.actions;
 export default slice.reducer;
