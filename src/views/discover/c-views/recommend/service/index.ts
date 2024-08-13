@@ -5,3 +5,9 @@ export function getBanner() {
     url: "/banner",
   });
 }
+
+export function getHotRecommend() {
+  return ztRequest.get({
+    url: "/personalized",
+  });
+}
