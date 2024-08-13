@@ -6,8 +6,11 @@ export function getBanner() {
   });
 }
 
-export function getHotRecommend() {
+export function getHotRecommend(limit = 8) {
   return ztRequest.get({
     url: "/personalized",
+    params: {
+      limit,
+    },
   });
 }

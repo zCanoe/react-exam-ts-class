@@ -1,6 +1,6 @@
 let BASE_URL = "";
 if (process.env.NODE_ENV === "development") {
-  BASE_URL = "http://codercba.com:9002" as const;
+  BASE_URL = "/api" as const;
 } else {
   BASE_URL = "http://codercba.com:9002" as const;
 }

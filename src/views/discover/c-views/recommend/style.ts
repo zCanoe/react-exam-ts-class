@@ -10,6 +10,12 @@ export const RecommendWrapper = styled.div`
       width: 729px;
       box-sizing: border-box;
       padding: 20px;
+
+      > .recommend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
     }
 
     > .right {
