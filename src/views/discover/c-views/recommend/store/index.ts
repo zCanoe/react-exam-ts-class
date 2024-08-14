@@ -3,6 +3,7 @@ import {
   getBanner,
   getHotRecommend,
   getNewAlbum,
+  getRankingList,
 } from "@/views/discover/c-views/recommend/service";
 import { RootState } from "@/store";
 
@@ -34,16 +35,32 @@ export const fetchAlbumNewestActions = createAsyncThunk(
   },
 );
 
+export const fetchRankingListActions = createAsyncThunk(
+  "recommend/ranking",
+  async (arg, { dispatch }) => {
+    const rankingIds = [19723756, 3779629, 2884035];
+    const promise: Promise<any>[] = [];
+    rankingIds.forEach((item) => {
+      promise.push(getRankingList(item));
+    });
+    const res = await Promise.all(promise);
+
+    dispatch(changeRankingActions(res));
+  },
+);
+
 const slice = createSlice({
   name: "recommend",
   initialState: (): {
     banner: any[];
     recommendList: any[];
     newAlbums: any[];
+    ranking: any[];
   } => ({
     banner: [],
     recommendList: [],
     newAlbums: [],
+    ranking: [],
   }),
   reducers: {
     changerBannerAction(state, { payload }) {
@@ -54,6 +71,9 @@ const slice = createSlice({
     },
     changeNewAlbumsActions(state, { payload }) {
       state.newAlbums = payload;
+    },
+    changeRankingActions(state, { payload }) {
+      state.ranking = payload;
     },
   },
   extraReducers: (builder) => {
@@ -71,5 +91,10 @@ const slice = createSlice({
 });
 
 export const recommendSelector = (state: RootState) => state.recommend;
-export const { changerBannerAction, changeRecommendAction, changeNewAlbumsActions } = slice.actions;
+export const {
+  changerBannerAction,
+  changeRecommendAction,
+  changeNewAlbumsActions,
+  changeRankingActions,
+} = slice.actions;
 export default slice.reducer;

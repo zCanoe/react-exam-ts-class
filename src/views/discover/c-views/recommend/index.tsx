@@ -4,6 +4,7 @@ import {
   fetachRecommentdDataActions,
   fetchAlbumNewestActions,
   fetchBannerDataAction,
+  fetchRankingListActions,
 } from "@/views/discover/c-views/recommend/store";
 import TopBanner from "@/views/discover/c-views/recommend/c-cpns/top-banner";
 import { RecommendWrapper } from "@/views/discover/c-views/recommend/style";
@@ -21,6 +22,7 @@ const Recommend: React.FC<Props> = () => {
     dispatch(fetchBannerDataAction());
     dispatch(fetachRecommentdDataActions());
     dispatch(fetchAlbumNewestActions());
+    dispatch(fetchRankingListActions());
   }, []);
   return (
     <RecommendWrapper>

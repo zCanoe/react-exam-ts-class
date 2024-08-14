@@ -20,3 +20,12 @@ export function getNewAlbum() {
     url: "/album/newest",
   });
 }
+
+export function getRankingList(id: number) {
+  return ztRequest.get({
+    url: "playlist/detail",
+    params: {
+      id,
+    },
+  });
+}
