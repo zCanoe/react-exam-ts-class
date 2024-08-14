@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBanner, getHotRecommend } from "@/views/discover/c-views/recommend/service";
+import {
+  getBanner,
+  getHotRecommend,
+  getNewAlbum,
+} from "@/views/discover/c-views/recommend/service";
 import { RootState } from "@/store";
 
 export const fetchBannerDataAction = createAsyncThunk(
@@ -21,14 +25,25 @@ export const fetachRecommentdDataActions = createAsyncThunk(
   },
 );
 
+export const fetchAlbumNewestActions = createAsyncThunk(
+  "recommend/albumNewest",
+  async (arg, { dispatch }) => {
+    const res: any = await getNewAlbum();
+    console.log(res);
+    dispatch(changeNewAlbumsActions(res.albums));
+  },
+);
+
 const slice = createSlice({
   name: "recommend",
   initialState: (): {
     banner: any[];
     recommendList: any[];
+    newAlbums: any[];
   } => ({
     banner: [],
     recommendList: [],
+    newAlbums: [],
   }),
   reducers: {
     changerBannerAction(state, { payload }) {
@@ -36,6 +51,9 @@ const slice = createSlice({
     },
     changeRecommendAction(state, { payload }) {
       state.recommendList = payload;
+    },
+    changeNewAlbumsActions(state, { payload }) {
+      state.newAlbums = payload;
     },
   },
   extraReducers: (builder) => {
@@ -53,5 +71,5 @@ const slice = createSlice({
 });
 
 export const recommendSelector = (state: RootState) => state.recommend;
-export const { changerBannerAction, changeRecommendAction } = slice.actions;
+export const { changerBannerAction, changeRecommendAction, changeNewAlbumsActions } = slice.actions;
 export default slice.reducer;

@@ -2,6 +2,7 @@ import React, { memo, ReactNode, useEffect } from "react";
 import { IUseDispatch } from "@/store";
 import {
   fetachRecommentdDataActions,
+  fetchAlbumNewestActions,
   fetchBannerDataAction,
 } from "@/views/discover/c-views/recommend/store";
 import TopBanner from "@/views/discover/c-views/recommend/c-cpns/top-banner";
@@ -18,6 +19,7 @@ const Recommend: React.FC<Props> = () => {
   useEffect(() => {
     dispatch(fetchBannerDataAction());
     dispatch(fetachRecommentdDataActions());
+    dispatch(fetchAlbumNewestActions());
   }, []);
   return (
     <RecommendWrapper>

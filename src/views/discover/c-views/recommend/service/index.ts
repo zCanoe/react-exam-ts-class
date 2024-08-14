@@ -14,3 +14,9 @@ export function getHotRecommend(limit = 8) {
     },
   });
 }
+
+export function getNewAlbum() {
+  return ztRequest.get({
+    url: "/album/newest",
+  });
+}

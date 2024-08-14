@@ -8,6 +8,11 @@ const theme = {
     wrap1: `
         width: 1100px;
         margin: 0 auto`,
+    textNoWrap: `
+          	white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+    `,
   },
 };
 
