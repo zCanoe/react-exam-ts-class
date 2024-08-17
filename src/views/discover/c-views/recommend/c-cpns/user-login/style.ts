@@ -11,6 +11,7 @@ export const UserLoginWrapper = styled.div`
 
   .botton {
     height: 126px;
+    background-position: 0 0;
     .info {
       width: 205px;
       padding: 16px 0;
