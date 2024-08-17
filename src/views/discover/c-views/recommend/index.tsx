@@ -11,6 +11,7 @@ import { RecommendWrapper } from "@/views/discover/c-views/recommend/style";
 import HotRecommend from "@/views/discover/c-views/recommend/c-cpns/hot-recommend";
 import NewAlbum from "@/views/discover/c-views/recommend/c-cpns/new-album";
 import HotRanking from "@/views/discover/c-views/recommend/c-cpns/hot-ranking";
+import UserLogin from "@/views/discover/c-views/recommend/c-cpns/user-login/UserLogin";
 
 interface Props {
   children?: ReactNode;
@@ -34,7 +35,9 @@ const Recommend: React.FC<Props> = () => {
           <NewAlbum />
           <HotRanking />
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <UserLogin />
+        </div>
       </div>
     </RecommendWrapper>
   );
