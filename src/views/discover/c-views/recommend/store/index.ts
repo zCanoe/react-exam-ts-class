@@ -45,6 +45,7 @@ export const fetchRankingListActions = createAsyncThunk(
     });
     const res = await Promise.all(promise);
 
+    console.log(res);
     dispatch(changeRankingActions(res));
   },
 );

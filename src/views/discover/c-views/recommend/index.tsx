@@ -23,6 +23,7 @@ const Recommend: React.FC<Props> = () => {
     dispatch(fetachRecommentdDataActions());
     dispatch(fetchAlbumNewestActions());
     dispatch(fetchRankingListActions());
+    console.log(111);
   }, []);
   return (
     <RecommendWrapper>
