@@ -29,3 +29,11 @@ export function getRankingList(id: number) {
     },
   });
 }
+
+export const getArtistList = (limit = 30) =>
+  ztRequest.get<{ artists: any[] }>({
+    url: "/artist/list",
+    params: {
+      limit,
+    },
+  });

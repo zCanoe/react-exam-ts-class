@@ -3,6 +3,7 @@ import { IUseDispatch } from "@/store";
 import {
   fetachRecommentdDataActions,
   fetchAlbumNewestActions,
+  fetchArtistList,
   fetchBannerDataAction,
   fetchRankingListActions,
 } from "@/views/discover/c-views/recommend/store";
@@ -12,6 +13,8 @@ import HotRecommend from "@/views/discover/c-views/recommend/c-cpns/hot-recommen
 import NewAlbum from "@/views/discover/c-views/recommend/c-cpns/new-album";
 import HotRanking from "@/views/discover/c-views/recommend/c-cpns/hot-ranking";
 import UserLogin from "@/views/discover/c-views/recommend/c-cpns/user-login/UserLogin";
+import Singer from "@/views/discover/c-views/recommend/c-cpns/singer";
+import PopularRadio from "@/views/discover/c-views/recommend/c-cpns/poular-radio";
 
 interface Props {
   children?: ReactNode;
@@ -24,6 +27,7 @@ const Recommend: React.FC<Props> = () => {
     dispatch(fetachRecommentdDataActions());
     dispatch(fetchAlbumNewestActions());
     dispatch(fetchRankingListActions());
+    dispatch(fetchArtistList());
     console.log(111);
   }, []);
   return (
@@ -37,6 +41,8 @@ const Recommend: React.FC<Props> = () => {
         </div>
         <div className="right">
           <UserLogin />
+          <Singer />
+          <PopularRadio />
         </div>
       </div>
     </RecommendWrapper>

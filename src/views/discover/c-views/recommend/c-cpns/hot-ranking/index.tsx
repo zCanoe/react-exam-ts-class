@@ -17,7 +17,7 @@ const HotRanking: React.FC<Props> = () => {
       <AreaHeaderV1 title={"榜单"} moreLink={"/discover/ranking"} />
       <div className="content">
         {ranking.map((item, index) => {
-          return <RankingItem key={index} itemData={item.playlist} />;
+          return item && <RankingItem key={index} itemData={item?.playlist} />;
         })}
       </div>
     </HotRankingWrapper>

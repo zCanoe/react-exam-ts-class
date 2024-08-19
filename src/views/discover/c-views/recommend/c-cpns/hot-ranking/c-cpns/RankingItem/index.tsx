@@ -7,7 +7,15 @@ interface Props {
   itemData?: any;
 }
 
-const RankingItem: React.FC<Props> = (props) => {
+const RankingItem: React.FC<Props> = (
+  props = {
+    itemData: {
+      coverImgUrl: "",
+      name: "",
+      tracks: [],
+    },
+  },
+) => {
   return (
     <RankingItemWrapper>
       <div className="header">
