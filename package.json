@@ -146,6 +146,7 @@
       "react-app"
     ]
   },
+  "proxy": "http://localhost:7001/",
   "devDependencies": {
     "sass": "^1.77.8",
     "scss": "^0.2.4"
